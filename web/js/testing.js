@@ -44,7 +44,7 @@ function send(form) {
             data: ajaxData
         })
         .done(function (jsonData) {
-            $("#httpStatus").val("200");
+            $("#httpStatus").text("200");
             var data = "";
             if (typeof jsonData === 'object')
                 data = show(jsonData);
@@ -53,7 +53,7 @@ function send(form) {
             $("#outputData").html(data);
         })
         .fail(function (xhr, status, errorThrown) {
-            $("#httpStatus").val(xhr.statusCode);
+            $("#httpStatus").text(xhr.statusCode);
             $("#outputData").html(show(xhr));
         })
 }
