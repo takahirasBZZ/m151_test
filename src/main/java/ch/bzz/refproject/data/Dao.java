@@ -49,12 +49,4 @@ public interface Dao<T, K> {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * counts the datasets in a table
-     * @return
-     */
-    default Integer count() {
-        return 0;
-    }
-
 }
