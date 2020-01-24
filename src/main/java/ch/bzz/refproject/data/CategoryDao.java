@@ -28,7 +28,7 @@ public class CategoryDao implements Dao<Category, String> {
         List<Category> categoryList = new ArrayList<>();
         String sqlQuery = "SELECT categoryUUID, title" +
                 " FROM Category" +
-                " ORDER BY title";
+                " ORDER BY title DESC";
         try {
             ResultSet resultSet = MySqlDB.sqlSelect(sqlQuery);
             while (resultSet.next()) {
