@@ -15,6 +15,7 @@ public class Project {
     private String title;
     private LocalDate startDate;
     private LocalDate endDate;
+    private String status;
 
     /**
      * Gets the projectUUID
@@ -117,5 +118,24 @@ public class Project {
 
     public void setEndDate(String endDate) {
         this.endDate = LocalDate.parse(endDate);
+    }
+
+    /**
+     * Gets the status
+     *
+     * @return value of status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets the status
+     *
+     * @param status the value to set
+     */
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

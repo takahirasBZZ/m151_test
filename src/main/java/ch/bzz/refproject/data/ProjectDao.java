@@ -1,5 +1,5 @@
 package ch.bzz.refproject.data;
 
-public class ProjectDao implements Dao {
+public class ProjectDao {
     public ProjectDao() {}
 }
