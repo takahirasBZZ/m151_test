@@ -59,9 +59,9 @@ public class MySqlDB {
         try {
             setPrepStmt(getConnection().prepareStatement(sqlQuery));
 
-            if (values != null) {
+            if (values != null)
                 setValues(values);
-            }
+
             setResultSet(getPrepStmt().executeQuery());
 
         } catch (SQLException sqlException) {
@@ -74,8 +74,7 @@ public class MySqlDB {
     /**
      * execute a query without dynamic values to update the db (INSERT, UPDATE, DELETE, REPLACE)
      *
-     * @param sqlQuery
-     *            the query to be executed
+     * @param sqlQuery the query to be executed
      * @return number of affected rows
      * @throws SQLException
      */
@@ -86,10 +85,8 @@ public class MySqlDB {
     /**
      * execute a query with dynamic values to update the db (UPDATE, DELETE, REPLACE)
      *
-     * @param sqlQuery
-     *            the query to be executed
-     * @param values
-     *            map of values to be inserted
+     * @param sqlQuery the query to be executed
+     * @param values   map of values to be inserted
      * @return number of affected rows
      * @throws SQLException
      */
@@ -97,21 +94,21 @@ public class MySqlDB {
         try {
             setPrepStmt(getConnection().prepareStatement(sqlQuery));
 
-            if (values != null) {
+            if (values != null)
                 setValues(values);
-            }
+
             int affectedRows = getPrepStmt().executeUpdate();
-            if (affectedRows <= 2) {
-                return Result.SUCCESS;
-            } else if (affectedRows == 0) {
+            if (affectedRows == 0)
                 return Result.NOACTION;
-            } else {
+            else if (affectedRows <= 2)
+                return Result.SUCCESS;
+            else
                 return Result.ERROR;
-            }
+
         } catch (SQLException sqlException) {
             printSQLException(sqlException);
             throw sqlException;
-        }finally {
+        } finally {
             sqlClose();
         }
     }
@@ -124,14 +121,13 @@ public class MySqlDB {
      */
     private static void setValues(Map<Integer, Object> values) throws SQLException {
 
-        for (Integer i=1; values.containsKey(i); i++) {
+        for (Integer i = 1; values.containsKey(i); i++) {
             if (values.get(i) == null)
                 getPrepStmt().setString(i, null);
             else if (values.get(i) instanceof LocalDate) {
                 LocalDate localDate = LocalDate.class.cast(values.get(i));
                 getPrepStmt().setObject(i, localDate);
-            }
-            else
+            } else
                 getPrepStmt().setString(i, values.get(i).toString());
 
         }
@@ -152,7 +148,7 @@ public class MySqlDB {
     /**
      * Show query, error codes and messages for a SQL-Exception
      *
-     * @param sqlEx the SQLException
+     * @param sqlEx    the SQLException
      * @param sqlQuery the executed query
      */
     static void printSQLException(SQLException sqlEx, String sqlQuery) {

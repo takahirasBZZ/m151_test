@@ -1,5 +1,10 @@
 package ch.bzz.refproject.data;
 
-public class ProjectDao {
+import ch.bzz.refproject.model.Project;
+
+public class ProjectDao implements Dao<Project, String>{
+    /**
+     * empty constructor
+     */
     public ProjectDao() {}
 }
